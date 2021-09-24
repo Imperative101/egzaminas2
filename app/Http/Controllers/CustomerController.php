@@ -56,11 +56,17 @@ class CustomerController extends Controller
 //this
         $validator = Validator::make($request->all(),
         [
-            'customer_name' => ['required', 'min:3', 'max:64'],
-            'customer_surname' => ['required', 'min:3', 'max:64'],
+            'name' => ['required', 'min:3', 'max:64'],
+            'surname' => ['required', 'min:3', 'max:64'],
         ],
         [
-        'customer_surname.min' => 'mano zinute'
+            'name.required' => 'kompanijos vardas privalomas',
+            'surname.required' => 'kompanijos adresas privalomas',
+            'name.min' => 'per trumpas kompanijos vardas',
+            'name.max' => 'per ilgas kompanijos vardas',
+            'surname.min' => 'per trumpas komanpijos adresas',
+            'surnames.max' => 'per ilgas kompanijos adresas',
+
         ]
     );
     if ($validator->fails()) {

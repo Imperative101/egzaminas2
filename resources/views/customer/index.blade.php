@@ -28,15 +28,15 @@
 
                 <option value="0">filtruokite pagal</option>
                 
-                <option value="name">varda</option>
-                <option value="surname">pavarde</option>
+                <option value="name">name</option>
+                <option value="surname">surname</option>
                 <option value="phone">telefona</option>
                 <option value="email">email</option>
                 <option value="comment">comment</option>
                 <option value="company_id">company_id</option>
 
-                    @foreach($customers as $customer)
-                    <option value="{{$customer->id}}">{{$customer->title}}</option>
+                    @foreach($customers as $customer)    <!-- customer -->
+                    <option value="{{$name->id}}">{{$customer->name}}</option>    <!-- customer -->
                 @endforeach
                   </select>
 
