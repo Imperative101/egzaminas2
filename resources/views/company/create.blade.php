@@ -9,7 +9,7 @@
 
                <div class="card-body">
                 <form method="POST" action="{{route('company.store')}}">
-
+                
  
                     <div class="form-group">
                         <label>name</label>
@@ -22,6 +22,12 @@
                         {{-- <small class="form-text text-muted">adress</small> --}}
                     </div>
 
+                    
+                    <div class="form-group">
+                        <label>timestamps</label>
+                        <input type="text" name="timestamps"  class="form-control">
+                        {{-- <small class="form-text text-muted">timestamps</small> --}}
+                    </div>
 
                     @csrf
                     <button class="btn btn-primary" type="submit">ADD</button>
