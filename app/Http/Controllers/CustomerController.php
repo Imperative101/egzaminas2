@@ -83,7 +83,7 @@ class CustomerController extends Controller
         $customer->phone = $request->customer_phone;
         $customer->email = $request->customer_email;
         $customer->comment = $request->customer_comment;
-        $customer->company_id = $request->customer_company_id;
+        $customer->company_id = $request->_company_id;
         $customer->save();
 
         return redirect()->route('customer.index');
@@ -132,7 +132,7 @@ return redirect()->route('customer.index')->with('success_message', 'Sekmingai i
         $customer->phone = $request->customer_phone;
         $customer->email = $request->customer_email;
         $customer->comment = $request->customer_comment;
-        $customer->company_id = $request->customer_company_id;
+        $customer->company_id = $request->company_id;
         $customer->save();
         return redirect()->route('customer.index');
 

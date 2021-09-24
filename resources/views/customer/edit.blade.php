@@ -10,39 +10,49 @@
                <div class="card-body">
                 <form method="POST" action="{{route('customer.update', $customer)}}">
 
+
                 <div class="form-group">
                         <label>name</label>
-                        <input type="text" name="name"  class="form-control" value="{{$customer->name}}">
-                        {{-- <small class="form-text text-muted">name.</small> --}}
+                        <input type="text"  class="form-control"  name="customer_name"
+                        value="{{ $customer->name }}">
+                        <small class="form-text text-muted">Customer name.</small> 
                     </div>
+
                     <div class="form-group">
                         <label>surname</label>
-                        <input type="text" name="surname"  class="form-control" value="{{$customer->surname}}">
-                        {{-- <small class="form-text text-muted">surname.</small> --}}
+                        <input type="text"  class="form-control"  name="customer_surname"
+                        value="{{ $customer->surname }}">
+                        <small class="form-text text-muted">Customer surname.</small> 
                     </div>
 
                     <div class="form-group">
                         <label>phone</label>
-                        <input type="text" name="phone"  class="form-control" value="{{$customer->phone}}">
-                        {{-- <small class="form-text text-muted">phone.</small> --}}
+                        <input type="text"  class="form-control"  name="customer_phone"
+                        value="{{ $customer->phone }}">
+                        <small class="form-text text-muted">Customer phone.</small> 
                     </div>
+        
                     <div class="form-group">
                         <label>email</label>
-                        <input type="text" name="email"  class="form-control" value="{{$customer->email}}">
-                        {{-- <small class="form-text text-muted">email.</small> --}}
+                        <input type="text"  class="form-control"  name="customer_email"
+                        value="{{ $customer->email }}">
+                        <small class="form-text text-muted">Customer email.</small> 
                     </div>
-
+                   
                     <div class="form-group">
                         <label>comment</label>
-                        <input type="text" name="comment"  class="form-control" value="{{$customer->comment}}">
-                        {{-- <small class="form-text text-muted">comment.</small> --}}
+                        <input type="text"  class="form-control"  name="customer_comment"
+                        value="{{ $customer->comment }}">
+                        <small class="form-text text-muted">Customer comment.</small> 
                     </div>
+                    
                     <div class="form-group">
                         <label>customer_id</label>
-                        <input type="text" name="customer_id"  class="form-control" value="{{$customer->customer_id}}">
-                        {{-- <small class="form-text text-muted">customer_id.</small> --}}
+                        <input type="text"  class="form-control"  name="customer_customer_id"
+                        value="{{ $customer->customer_id }}">
+                        <small class="form-text text-muted">Customer customer_id.</small> 
                     </div>
-
+                   
                     
                     
                     @csrf

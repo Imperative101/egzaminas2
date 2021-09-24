@@ -12,7 +12,7 @@ class Company extends Model
 
     public function companyCustomer()
    {
-    return $this->belongsTo('App\Models\Customer', 'company_id', 'id');
+    return $this->hasMany('App\Models\Customer', 'company_id', 'id');
 
    }
 }

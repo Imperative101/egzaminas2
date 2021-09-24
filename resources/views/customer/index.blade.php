@@ -13,7 +13,7 @@
 
                <div class="card-header">Clientu sarasas</div>
               <form action="{{route('customer.indexSpecifics')}}" method="get"> Rusiavimas</form>
-                <select class="form-control" name="order" id="">
+                <select class="form-control" name="order" id=""> 
                 <option class="form-control" name="order" id="">
                 <option value="0">rusiuokite pagal</option>
                 <option value="name">varda</option>
@@ -72,8 +72,9 @@
                       <td>{!!$customer->comment!!}</td>
                       <td>{!!$customer->company_id!!}</td>
 
+                    
                     <!-- form -->
-                      <select name="customer" class="form-control">
+                    <select name="customer" class="form-control">
                               @foreach ($customers as $customer)
                                     <option value="{{$customer->id}}" @if($customer->id == $customer->company) selected @endif>
                                        {{$customer->title}} 
@@ -81,7 +82,6 @@
                               @endforeach
                       </select>
                      <!-- form -->
-
 
 
 
