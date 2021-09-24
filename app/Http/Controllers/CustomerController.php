@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Validator;
 
 class CustomerController extends Controller
 {
@@ -16,8 +17,22 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
         return view('customer.index', ['customers' => $customers]);
-    }
 
+    }
+    //this
+    public function indexSpecifics(Request $request) 
+    {
+       
+        $customers = Customer::all();
+        if ($request->order) {
+            $customers = $customers->sortBy($request->order);
+        }
+        if($request->filter) {
+            $customers = $customers->where('company_id','=', $request->$filter);
+        }
+        return view('customer.index', ['customers' => $customers]);
+    }
+//this
     /**
      * Show the form for creating a new resource.
      *
@@ -37,6 +52,25 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+
+//this
+        $validator = Validator::make($request->all(),
+        [
+            'customer_name' => ['required', 'min:3', 'max:64'],
+            'customer_surname' => ['required', 'min:3', 'max:64'],
+        ],
+        [
+        'customer_surname.min' => 'mano zinute'
+        ]
+    );
+    if ($validator->fails()) {
+        $request->flash();
+        return redirect()->back()->withErrors($validator);
+    }
+//this
+
+
+
         $customer = new Customer;
         $customer->name = $request->customer_name;
         $customer->surname = $request->customer_surname;

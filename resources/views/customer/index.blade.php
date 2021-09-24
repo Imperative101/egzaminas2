@@ -9,6 +9,47 @@
            <div class="card">
                <div class="card-header">customer create</div>
 
+               <!-- form -->
+
+               <div class="card-header">Clientu sarasas</div>
+              <form action="{{route('customer.indexSpecifics')}}" method="get"> Rusiavimas</form>
+                <select class="form-control" name="order" id="">
+                <option class="form-control" name="order" id="">
+                <option value="0">rusiuokite pagal</option>
+                <option value="name">varda</option>
+                <option value="surname">pavarde</option>
+                <option value="phone">telefona</option>
+                <option value="email">email</option>
+                <option value="comment">comment</option>
+                <option value="company_id">company_id</option>
+              </select>
+              filtravimas
+              <select class="form control" name="filter" id="">
+
+                <option value="0">filtruokite pagal</option>
+                
+                <option value="name">varda</option>
+                <option value="surname">pavarde</option>
+                <option value="phone">telefona</option>
+                <option value="email">email</option>
+                <option value="comment">comment</option>
+                <option value="company_id">company_id</option>
+
+                    @foreach($customers as $customer)
+                    <option value="{{$customer->id}}">{{$customer->title}}</option>
+                @endforeach
+                  </select>
+
+
+                    <button class="btn btn-primary" type="submit">select</button>
+                    </form>
+                      <a href="{{ route('customer.index') }}">isvalyti filtra</a>
+                      </div>
+
+                 <!-- form -->
+
+
+
                <div class="card-body">
                  <table class="table">
                    <tr>
@@ -30,6 +71,23 @@
                       <td>{!!$customer->email!!}</td>
                       <td>{!!$customer->comment!!}</td>
                       <td>{!!$customer->company_id!!}</td>
+
+                    <!-- form -->
+                      <select name="customer" class="form-control">
+                              @foreach ($customers as $customer)
+                                    <option value="{{$customer->id}}" @if($customer->id == $customer->company) selected @endif>
+                                       {{$customer->title}} 
+                                    </option>
+                              @endforeach
+                      </select>
+                     <!-- form -->
+
+
+
+
+
+
+
                       <td><a class="btn btn-success" href="{{route('customer.show',[$customer])}}">užeiti</a></td>
                       <td><a class="btn btn-primary" href="{{route('customer.edit',[$customer])}}">edit</a></td>
                       <td>

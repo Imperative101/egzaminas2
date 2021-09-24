@@ -23,11 +23,7 @@
                     </div>
 
                     
-                    <div class="form-group">
-                        <label>timestamps</label>
-                        <input type="text" name="timestamps"  class="form-control">
-                        {{-- <small class="form-text text-muted">timestamps</small> --}}
-                    </div>
+                  
 
                     @csrf
                     <button class="btn btn-primary" type="submit">ADD</button>

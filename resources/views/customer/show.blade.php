@@ -11,33 +11,33 @@
             
 
               <div class="form-group">
-            <label>Plotas:</label>
+            <label>Information:</label>
             {{$customer->name}}
             <small class="form-text text-muted">name of this customer</small>
             </div>
 
-            <label>Plotas:</label>
+            <label>Information:</label>
             {{$customer->surname}}
             <small class="form-text text-muted">surname of this customer</small>
             </div>
 
-            <label>Plotas:</label>
+            <label>Information:</label>
             {{$customer->phone}}
             <small class="form-text text-muted">phone of this customer</small>
             </div>
 
 
-            <label>Plotas:</label>
+            <label>Information:</label>
             {{$customer->email}}
             <small class="form-text text-muted">email of this customer</small>
             </div>
 
-            <label>Plotas:</label>
+            <label>Information:</label>
             {{$customer->comment}}
             <small class="form-text text-muted">comment of this customer</small>
             </div>
 
-            <label>Plotas:</label>
+            <label>Information:</label>
             {{$customer->company_id}}
             <small class="form-text text-muted">id of this customer</small>
             </div>
