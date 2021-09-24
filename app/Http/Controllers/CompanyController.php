@@ -43,9 +43,9 @@ class CompanyController extends Controller
         $company->save();
         return redirect()->route('company.index');
 
-return redirect()->route('company.index')->with('success_message', 'Sekmingai įrašytas.');
-return redirect()->route('company.index')->with('success_message', 'Sėkmingai pakeistas.');
-return redirect()->route('company.index')->with('success_message', 'Sekmingai ištrintas.');
+// return redirect()->route('company.index')->with('success_message', 'Sekmingai įrašytas.');
+// return redirect()->route('company.index')->with('success_message', 'Sėkmingai pakeistas.');
+// return redirect()->route('company.index')->with('success_message', 'Sekmingai ištrintas.');
     }
 
     /**

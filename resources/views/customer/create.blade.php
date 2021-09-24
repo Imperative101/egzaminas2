@@ -13,36 +13,51 @@
  
                     <div class="form-group">
                         <label>name</label>
-                        <input type="text" name="name"  class="form-control">
-                        {{-- <small class="form-text text-muted">name</small> --}}
+                        <input type="text" name="customer_name" class="form-control" value = "{{old('customer_name')}}">
+                        <!-- <input type="text" name="name"  class="form-control"> -->
+                        <small class="form-text text-muted">name</small> 
                     </div>
                     <div class="form-group">
                         <label>surname</label>
-                        <input type="text" name="surname"  class="form-control">
-                        {{-- <small class="form-text text-muted">surname</small> --}}
+
+
+                        <input type="text" name="customer_surname" class="form-control" value = "{{old('customer_surname')}}">
+                        <small class="form-text text-muted">surname</small>
                     </div>
 
                     <div class="form-group">
                         <label>phone</label>
-                        <input type="text" name="phone"  class="form-control">
-                        {{-- <small class="form-text text-muted">phone</small> --}}
+                        <input type="text" name="customer_phone" class="form-control" value = "{{old('customer_phone')}}">
+                        <small class="form-text text-muted">phone</small>
                     </div>
                     <div class="form-group">
                         <label>email</label>
-                        <input type="text" name="email"  class="form-control">
-                        {{-- <small class="form-text text-muted">email</small> --}}
+                        <input type="text" name="customer_email" class="form-control" value = "{{old('customer_email')}}">
+                        <small class="form-text text-muted">email</small>
                     </div>
 
                     <div class="form-group">
                         <label>comment</label>
-                        <input type="text" name="comment"  class="form-control">
-                        {{-- <small class="form-text text-muted">comment</small> --}}
+                        <textarea name="customer_comment" class="form-control" id="summernote">{{old('customer_comment')}}</textarea>
+                        <small class="form-text text-muted">comment</small> 
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>company_id</label>
-                        <input type="text" name="company_id"  class="form-control">
-                        {{-- <small class="form-text text-muted">company_id</small> --}}
-                    </div>
+                        <textarea name="customer_comment" class="form-control" id="summernote">{{old('customer_comment')}}</textarea>
+                         <small class="form-text text-muted">company_id</small>
+                    </div> -->
+
+                    <div class="form-group">
+                            <label>Company</label>
+                            <select name="company_id" class="form-control">
+                                <option value="0" disabled selected>Select Company</option>
+                                @foreach ($companies as $company)
+                                    <option value="{{$company->id}}">
+                                        {{$company->name}} {{$company->address}}</option>
+                                @endforeach
+                            </select>
+                            <small class="form-text text-muted">Set customer to company</small>
+                        </div>
 
 
                     @csrf

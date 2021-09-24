@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -16,22 +17,25 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        return view('customer.index', ['customers' => $customers]);
+        $companies = Company::all();
+        // dd($customers);
+        // $companies = Company::orderBy('name');
+        return view('customer.index', ['customers' => $customers, 'companies' => $companies]);
 
     }
     //this
     public function indexSpecifics(Request $request) 
     {
        
-        $customers = Customer::all();
-        if ($request->order) {
-            $customers = $customers->sortBy($request->order);
-        }
-        if($request->filter) {
-            $customers = $customers->where('company_id','=', $request->$filter);
-        }
-        return view('customer.index', ['customers' => $customers]);
-    }
+     //   $customers = Customer::all();
+     //   if ($request->order) {
+     //       $customers = $customers->sortBy($request->order);
+     //   }
+    //    if($request->filter) {
+     //       $customers = $customers->where('company_id','=', $request->$filter);
+     //   }
+     //   return view('customer.index', ['customers' => $customers]);
+   }
 //this
     /**
      * Show the form for creating a new resource.
@@ -40,8 +44,9 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        $customers = Customer::all();
-       return view('customer.create', ['customers' => $customers]);
+    $customers = Customer::all();
+    $companies = Company::all();
+       return view('customer.create', ['customers' => $customers, 'companies' => $companies]);
     }
 
     /**
@@ -54,39 +59,72 @@ class CustomerController extends Controller
     {
 
 //this
-        $validator = Validator::make($request->all(),
-        [
-            'name' => ['required', 'min:3', 'max:64'],
-            'surname' => ['required', 'min:3', 'max:64'],
-        ],
-        [
-            'name.required' => 'kompanijos vardas privalomas',
-            'surname.required' => 'kompanijos adresas privalomas',
-            'name.min' => 'per trumpas kompanijos vardas',
-            'name.max' => 'per ilgas kompanijos vardas',
-            'surname.min' => 'per trumpas komanpijos adresas',
-            'surnames.max' => 'per ilgas kompanijos adresas',
+    //     $validator = Validator::make($request->all(),
+    //     [
+    //         'name' => ['required', 'min:3', 'max:64'],
+    //         'surname' => ['required', 'min:3', 'max:64'],
+    //     ],
+    //     [
+    //         'name.required' => 'kompanijos vardas privalomas',
+    //         'surname.required' => 'kompanijos adresas privalomas',
+    //         'name.min' => 'per trumpas kompanijos vardas',
+    //         'name.max' => 'per ilgas kompanijos vardas',
+    //         'surname.min' => 'per trumpas komanpijos adresas',
+    //         'surnames.max' => 'per ilgas kompanijos adresas',
 
-        ]
-    );
-    if ($validator->fails()) {
-        $request->flash();
-        return redirect()->back()->withErrors($validator);
-    }
+    //     ]
+    // );
+    // if ($validator->fails()) {
+    //     $request->flash();
+    //     return redirect()->back()->withErrors($validator);
+    // }
 //this
 
+$validator = Validator::make($request->all(),
+        [
+            'customer_name' => ['required', 'min:3','max:32'],
+            'customer_surname' => ['required', 'min:3', 'max:32'],
+            'customer_phone' => ['required', 'min:5', 'max:24'],
 
-
+            'customer_email' => ['required', 'min:5', 'max:64'],
+            'customer_comment' => ['required','min:1'],
+            // 'company_id' => ['required']
+        ]
+ 
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+//  
+ 
         $customer = new Customer;
         $customer->name = $request->customer_name;
         $customer->surname = $request->customer_surname;
         $customer->phone = $request->customer_phone;
+
         $customer->email = $request->customer_email;
         $customer->comment = $request->customer_comment;
-        $customer->company_id = $request->_company_id;
-        $customer->save();
+        $customer->company_id = $request->company_id;
 
-        return redirect()->route('customer.index');
+        $customer->save();
+        // return redirect()->route('customer.index');
+
+        return redirect()->route('customer.index')
+        ->with('success_message', 'Added successfully');
+
+
+
+        // $customer = new Customer;
+        // $customer->name = $request->customer_name;
+        // $customer->surname = $request->customer_surname;
+        // $customer->phone = $request->customer_phone;
+        // $customer->email = $request->customer_email;
+        // $customer->comment = $request->customer_comment;
+        // $customer->company_id = $request->company_id;
+        // $customer->save();
+
+        // return redirect()->route('customer.index');
 
 
 

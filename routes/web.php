@@ -44,7 +44,7 @@ Route::group(['prefix' => 'customers'], function(){
     Route::get('', [CustomerController::class, 'index'])->name('customer.index');
    Route::get('create', [CustomerController::class, 'create'])->name('customer.create');
   
-   Route::get('indexSpecifics', [CustomerController::class, 'indexSpecifics'])->name('customer.indexSpecifics');
+ //  Route::get('indexSpecifics', [CustomerController::class, 'indexSpecifics'])->name('customer.indexSpecifics');
 
    Route::post('store', [CustomerController::class, 'store'])->name('customer.store');
    Route::get('edit/{customer}', [CustomerController::class, 'edit'])->name('customer.edit');

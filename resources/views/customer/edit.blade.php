@@ -48,7 +48,7 @@
                     
                     <div class="form-group">
                         <label>customer_id</label>
-                        <input type="text"  class="form-control"  name="customer_customer_id"
+                        <input type="text"  class="form-control"  name="customer_id"
                         value="{{ $customer->customer_id }}">
                         <small class="form-text text-muted">Customer customer_id.</small> 
                     </div>
